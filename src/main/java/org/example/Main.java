@@ -22,27 +22,32 @@ public class Main {
 
             try {
                 Connection connection = Connector.getConnection();
-                PreparedStatement createjournalist = connection.prepareStatement("" +
-                        "CREATE TABLE IF NOT EXISTS Journalist (\n" +
-                        "\n" +
-                        "    CPRNumber numeric(10,0),\n" +
-                        "    FirstName varchar(35),\n" +
-                        "    LastName varchar(70),\n" +
-                        "   Streetname varchar(35),\n"+
-                        "    Civicnr numeric(8,0),\n" +
-                        "    Zipcode numeric(4,0),\n" +
-                        " Country varchar(35),\n"+
-                        "    primary key (CPRNumber)\n" +
-                        "\n" +
-                        ");;");
-                PreparedStatement createfootage = connection.prepareStatement("CREATE TABLE IF NOT EXISTS Footage(\n" +
+
+
+                String createjournalistsql = "CREATE TABLE IF NOT EXISTS Journalist (\n" +
+                        "                        \"    CPRNumber numeric(10,0),\n" +
+                        "                        \"    FirstName varchar(35),\n" +
+                        "                        \"    LastName varchar(70),\n" +
+                        "                        \"   Streetname varchar(35),\n" +
+                        "                        \"    Civicnr numeric(8,0),\n" +
+                        "                        \"    Zipcode numeric(4,0),\n" +
+                        "                        \" Country varchar(35),\n" +
+                        "                        \"    primary key (CPRNumber)\\n\" +\n" +
+                        "                        \"\n\" +\n" +
+                        "                        \");;" ;
+
+                PreparedStatement createjournalist = connection.prepareStatement(createjournalistsql);
+
+                String createfootagessql = "CREATE TABLE IF NOT EXISTS Footage(\n" +
                         "\n" +
                                 "   Footagetitle Varchar(70),\n" +
-                        "      DateOfShooting timestamp,\n\n" +
-                        "    Duration time,\n" +
-                        "    primary key (Footagetitle)\n" +
-                        "\n" +
-                        ");;");
+                                "      DateOfShooting timestamp,\n\n" +
+                                "    Duration time,\n" +
+                                "    primary key (Footagetitle)\n" +
+                                "\n" +
+                                ");;";
+
+                PreparedStatement createfootage = connection.prepareStatement(createfootagessql);
                 createfootage.executeUpdate();
                 createjournalist.executeUpdate();
                 List<FootageAndReporter> farList = new ArrayList<FootageAndReporter>();
