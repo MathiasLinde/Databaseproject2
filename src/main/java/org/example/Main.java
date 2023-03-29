@@ -72,12 +72,13 @@ public class Main {
                   String footageTitle = footage.getTitle();
                   Integer footageDuration = footage.getDuration();
 
-                  PreparedStatement insertFootage = connection.prepareStatement("insert into 'Footage'(DateOfShooting, Footagetitle, Duration) VALUE (?,?,?)");
+                  String sqlfootage = "insert into Footage (DateOfShooting, Footagetitle, Duration) VALUE (?,?,?)";
+                  PreparedStatement insertFootage = connection.prepareStatement(sqlfootage);
                   insertFootage.setDate(1,  dateOnfootage );
                   insertFootage.setString(2,footageTitle);
                   insertFootage.setInt(3,footageDuration);
                   insertFootage.executeUpdate();
-
+                  // String sqlJournalist = "insert into 'Journalist'() Value ()";
                  // PreparedStatement insertJournalist = connection.prepareStatement("insert into 'Journalist'(C)");
 
 
