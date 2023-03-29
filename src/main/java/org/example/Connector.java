@@ -15,9 +15,12 @@ public class Connector {
 
     private static final String USERNAME = "root"; // insert you username for your MariaDB
 
-    private static final String PASSWORD = "kage123"; // Insert your password
+    private static final String PASSWORD = ""; // Insert your password
+    private static Connection connection;
 
-    Connection connection;
+    public static Connection getConnection() {
+        return connection;
+    }
 
     Connector (){
 
@@ -26,12 +29,15 @@ public class Connector {
 
             connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
 
+            createDatabaseSchema();
 
         }catch (SQLException e ){
             e.printStackTrace();
         }
 
     }
+    private void createDatabaseSchema(){
 
+    }
 
 }

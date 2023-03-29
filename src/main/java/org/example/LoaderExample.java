@@ -14,6 +14,7 @@ public class LoaderExample {
 			for(FootageAndReporter footageAndReporter : footagesAndReporters) {
 				System.out.print("\tFootage: " + footageAndReporter.getFootage());
 				System.out.println("\tReporter: " + footageAndReporter.getReporter());
+
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

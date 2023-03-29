@@ -27,6 +27,8 @@ public class FootagesAndReportersLoader {
 
 	public List<FootageAndReporter> loadFootagesAndReporters(String filename) throws FileNotFoundException, IOException {
 		List<FootageAndReporter> farList = new ArrayList<FootageAndReporter>();
+		List<Reporter> journalistList = new ArrayList<Reporter>();
+		List<Footage> footageList = new ArrayList<Footage>();
 		
 		BufferedReader in = null;
 		try {
@@ -60,8 +62,17 @@ public class FootagesAndReportersLoader {
 						Integer civicNumber = Integer.valueOf(values.get(7));
 						Integer zipCode  = Integer.valueOf(values.get(8));
 						String country = values.get(9);
+
 						FootageAndReporter far = new FootageAndReporter(title, date, duration, cpr, firstName, lastName, streetName, civicNumber, zipCode, country);
+
+						Footage footages = new Footage(title,date,duration);
+						Reporter journalists = new Reporter(cpr,firstName,lastName,streetName,civicNumber,zipCode,country);
+
+
+
 						farList.add(far);
+						journalistList.add(journalists);
+						footageList.add(footages);
 					} else
 						throw new IOException("Invalid number of values on line " +lineNbr +". expected " +NUMBER_OF_FIELDS_EXPECTED +" values, found " +values.size());
 		    	}
@@ -72,5 +83,8 @@ public class FootagesAndReportersLoader {
 		}
 		
 		return farList;
+
+
+
 	}
 }
