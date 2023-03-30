@@ -5,7 +5,9 @@ import java.util.List;
 
 public class LoaderExample {
 
-
+/**
+ * This is just the example provided as part of the assignment run the main method in Startprogram
+ */
 	public static void main(String[] args) {
 		FootagesAndReportersLoader loader = new FootagesAndReportersLoader();
 		try {
