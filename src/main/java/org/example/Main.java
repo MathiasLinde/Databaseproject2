@@ -25,27 +25,28 @@ public class Main {
 
 
                 String createjournalistsql = "CREATE TABLE IF NOT EXISTS Journalist (\n" +
-                        "                        \"    CPRNumber numeric(10,0),\n" +
-                        "                        \"    FirstName varchar(35),\n" +
-                        "                        \"    LastName varchar(70),\n" +
-                        "                        \"   Streetname varchar(35),\n" +
-                        "                        \"    Civicnr numeric(8,0),\n" +
-                        "                        \"    Zipcode numeric(4,0),\n" +
-                        "                        \" Country varchar(35),\n" +
-                        "                        \"    primary key (CPRNumber)\\n\" +\n" +
-                        "                        \"\n\" +\n" +
-                        "                        \");;" ;
+                        "                                                 CPRNumber numeric(10,0),   \n" +
+                        "                                                 FirstName varchar(35) ,\n" +
+                        "                                                 LastName varchar(70),\n" +
+                        "                                                 Streetname varchar(35),\n" +
+                        "                                                 Civicnr numeric(8,0),\n" +
+                        "                                                 Zipcode numeric(4,0),\n" +
+                        "                                                 Country varchar(35),\n" +
+                        "                                              primary key (CPRNumber) );" ;
+                        
 
                 PreparedStatement createjournalist = connection.prepareStatement(createjournalistsql);
 
-                String createfootagessql = "CREATE TABLE IF NOT EXISTS Footage(\n" +
-                        "\n" +
-                                "   Footagetitle Varchar(70),\n" +
-                                "      DateOfShooting timestamp,\n\n" +
-                                "    Duration time,\n" +
-                                "    primary key (Footagetitle)\n" +
-                                "\n" +
-                                ");;";
+                String createfootagessql = """
+                        CREATE TABLE IF NOT EXISTS Footage(
+
+                           Footagetitle Varchar(70),
+                        DateOfShooting timestamp,
+
+                       Duration numeric(4,0),
+                            primary key (Footagetitle)
+
+                        );;""";
 
                 PreparedStatement createfootage = connection.prepareStatement(createfootagessql);
                 createfootage.executeUpdate();
@@ -75,7 +76,8 @@ public class Main {
 
 
                   String footageTitle = footage.getTitle();
-                  Integer footageDuration = footage.getDuration();
+                  int footageDuration = footage.getDuration();
+                    System.out.println(footageDuration);
 
                   String sqlfootage = "insert into Footage (DateOfShooting, Footagetitle, Duration) VALUE (?,?,?)";
                   PreparedStatement insertFootage = connection.prepareStatement(sqlfootage);

@@ -65,14 +65,12 @@ public class FootagesAndReportersLoader {
 
 						FootageAndReporter far = new FootageAndReporter(title, date, duration, cpr, firstName, lastName, streetName, civicNumber, zipCode, country);
 
-						Footage footages = new Footage(title,date,duration);
-						Reporter journalists = new Reporter(cpr,firstName,lastName,streetName,civicNumber,zipCode,country);
+
 
 
 
 						farList.add(far);
-						journalistList.add(journalists);
-						footageList.add(footages);
+
 					} else
 						throw new IOException("Invalid number of values on line " +lineNbr +". expected " +NUMBER_OF_FIELDS_EXPECTED +" values, found " +values.size());
 		    	}
